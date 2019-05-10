@@ -6,8 +6,8 @@ Most of the commits in this repository correspond to videos in the program.
 
 ## Project Setup
 
-* clone the Project - `git@github.com:udacity/reactnd-chirper-app.git`
-* install the dependencies - `npm install`
+- clone the Project - `git@github.com:udacity/reactnd-chirper-app.git`
+- install the dependencies - `npm install`
 
 ## Contributing
 
@@ -18,3 +18,24 @@ If you feel like there's a major problem, please open an issue to discuss the pr
 ## License
 
 MIT
+
+## Guide
+
+Twitter like app
+
+We have some planning steps for the project (nice to take some notes)
+One of the best parts of the analyze is how to normalize the data in the store, we can check /src/utils/\_DATA.js.
+
+- users. Object with key the id (formated name)
+- tweets. Object with key the tweetId.
+  - has the likes
+  - has the replies
+- authed property
+
+### Views
+
+#### Dashboard
+
+- get the tweets
+- get the users
+- get the authedUser
