@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import tweets from "../reducers/tweets";
+import Tweet from "./Tweet";
 
 class DashBoard extends Component {
   static propTypes = {
@@ -15,7 +15,8 @@ class DashBoard extends Component {
         <ul className="dashboard-list">
           {this.props.tweetsIds.map(id => (
             <li key={id}>
-              <div>TWEET ID: {id}</div>
+              {/* <div>TWEET ID: {id}</div> */}
+              <Tweet id={id} />
             </li>
           ))}
         </ul>
