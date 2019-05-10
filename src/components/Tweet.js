@@ -6,6 +6,7 @@ import TiArrowBackOutline from "react-icons/lib/ti/arrow-back-outline";
 import TiHeartOutline from "react-icons/lib/ti/heart-outline";
 import TiHeartFullOutline from "react-icons/lib/ti/heart-full-outline";
 import { handleToggleTweet } from "../actions/tweets";
+import { Link, withRouter } from "react-router-dom";
 
 class Tweet extends Component {
   static propTypes = {
@@ -16,6 +17,7 @@ class Tweet extends Component {
 
   toParent = (e, id) => {
     e.preventDefault();
+    this.props.history.push(`/tweet/${id}`);
   };
   handleLike = e => {
     e.preventDefault();
@@ -36,28 +38,28 @@ class Tweet extends Component {
     const {
       name,
       avatar,
-      timeStamp,
+      timestamp,
       text,
       hasLiked,
       likes,
       replies,
-      parentTweet
+      parent
     } = tweet;
     return (
-      <div className="tweet">
+      <Link to={`/tweet/${tweet.id}`} className="tweet">
         <img src={avatar} alt={`Avatar of {name}`} className="avatar" />
         <div className="tweet-info">
           <div>
             <span>{name}</span>
-            <div>{formatDate(timeStamp)}</div>
-            {parentTweet && (
+            <div>{formatDate(timestamp)}</div>
+            {parent && (
               <button
                 className="replying-to"
                 onClick={e => {
-                  this.toParent(e, parentTweet.id);
+                  this.toParent(e, parent.id);
                 }}
               >
-                Replying to @{parentTweet.author}
+                Replying to @{parent.author}
               </button>
             )}
             <p>{text}</p>
@@ -75,7 +77,7 @@ class Tweet extends Component {
             <span>{likes !== 0 && likes}</span>
           </div>
         </div>
-      </div>
+      </Link>
     );
   }
 }
@@ -89,4 +91,4 @@ const mapStateToProps = ({ authedUser, users, tweets }, { id }) => {
       : null
   };
 };
-export default connect(mapStateToProps)(Tweet);
+export default withRouter(connect(mapStateToProps)(Tweet));
