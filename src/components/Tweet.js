@@ -10,7 +10,7 @@ import { handleToggleTweet } from "../actions/tweets";
 class Tweet extends Component {
   static propTypes = {
     authedUser: PropTypes.string,
-    tweet: PropTypes.object.isRequired,
+    tweet: PropTypes.object,
     id: PropTypes.string.isRequired
   };
 
